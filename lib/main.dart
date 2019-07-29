@@ -1,62 +1,85 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(new MaterialApp(
-    title: 'Flutter Tutorial',
-    home: new TutorialHome(),
-  ));
-}
+void main() => runApp(new MyApp());
 
-class TutorialHome extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //Scaffold是Material中主要的布局组件.
-    return new Scaffold(
-      appBar: new AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.menu),
-          tooltip: 'Navigation menu',
-          onPressed: null,
-        ),
-        title: new Text('Example title11'),
-        actions: <Widget>[
-          new IconButton(
-            icon: new Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: null,
-          ),
-        ],
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      //body占屏幕的大部分
-      body: new Center(
-        child: new Text('哈哈哈哈哈!'),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        tooltip: 'Add', // used by assistive technologies
-        child: new Icon(Icons.add),
-        onPressed: null,
-      ),
+      routes:{
+        "new_page":(context)=>NewRoute(),
+      } ,
+      home: new MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
-class MyButton extends StatelessWidget {
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _MyHomePageState createState() => new _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
-      onTap: () {
-        print('MyButton was tapped!');
-      },
-      child: new Container(
-        height: 36.0,
-        padding: const EdgeInsets.all(8.0),
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        decoration: new BoxDecoration(
-          borderRadius: new BorderRadius.circular(5.0),
-          color: Colors.lightGreen[500],
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              child: Text('11111'),
+              textColor: Colors.blue,
+              onPressed: (){
+                Navigator.pushNamed(context,"new_page");
+              }
+            ),
+            new Text(
+              'You have pushed the button this many times:',
+            ),
+            new Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ],
         ),
-        child: new Center(
-          child: new Text('Engage'),
-        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class NewRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("New route",)
+      ),
+      body: Center(
+        child: Text("this is new route"),
       ),
     );
   }
