@@ -13,7 +13,24 @@ class MyApp extends StatelessWidget {
       routes:{
         "new_page":(context)=>NewRoute(),
       } ,
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        backgroundColor: Color.fromARGB(255, 255, 125, 125),
+        body:Center(child: Container(
+          child: new Text('this is a flutter demo'),
+          alignment: Alignment.topLeft,
+          width: 500.0,
+          height: 300.0,
+          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+          margin: const EdgeInsets.all(10),
+          decoration: new BoxDecoration(
+            gradient: const LinearGradient(
+              colors: [Colors.lightBlue,Colors.greenAccent,Colors.yellow]
+            ),
+            border: Border.all(width: 2.0,color: Colors.cyanAccent)
+          ),
+          ),)
+      )
     );
   }
 }
@@ -54,7 +71,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             new Text(
               'You have pushed the button this many times:',
+              textAlign: TextAlign.left,
+              overflow: TextOverflow.fade,
+              maxLines: 2,
+              style:TextStyle(
+                fontSize: 25.0,
+                color:Color.fromARGB(255, 255, 125, 125),
+                decoration: TextDecoration.underline,
+                decorationStyle: TextDecorationStyle.double
+                )
             ),
+           
             new Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
