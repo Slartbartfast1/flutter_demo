@@ -15,21 +15,20 @@ class MyApp extends StatelessWidget {
       } ,
       // home: new MyHomePage(title: 'Flutter Demo Home Page'),
       home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 255, 125, 125),
+        // backgroundColor: Color.fromARGB(255, 255, 125, 125),
         body:Center(child: Container(
-          child: new Text('this is a flutter demo'),
-          alignment: Alignment.topLeft,
-          width: 500.0,
-          height: 300.0,
-          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-          margin: const EdgeInsets.all(10),
-          decoration: new BoxDecoration(
-            gradient: const LinearGradient(
-              colors: [Colors.lightBlue,Colors.greenAccent,Colors.yellow]
+          child: new Image.network(
+            'https://cdn.jsdelivr.net/gh/flutterchina/website@1.0/images/homepage/header-illustration.png',
+            fit: BoxFit.fill,
+            color: Colors.greenAccent,
+            colorBlendMode: BlendMode.modulate,
+            repeat: ImageRepeat.repeat,
             ),
-            border: Border.all(width: 2.0,color: Colors.cyanAccent)
+          width: 380.0,
+          height: 300.0,
+          color: Colors.lightBlue
           ),
-          ),)
+        )
       )
     );
   }
